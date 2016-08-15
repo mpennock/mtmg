@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Welcome!</title>
-</head>
-<body>
+<?php
+$page_title = "Home";
+include("inc/header.php");
+?>
 	<h1>Welcome</h1>
-</body>
-</html>
+<?php include("inc/footer.php"); ?>
