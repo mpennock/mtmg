@@ -5,7 +5,7 @@ include("inc/header.php");
 
 ?>
 
-<form action="board.php" method="post">
+<form action="save_post.php" method="post">
 	<div>
 		<label for="board">Posting to...</label>
 		<select name="board" id="board">
@@ -28,6 +28,7 @@ include("inc/header.php");
 		<textarea name="post_content" id="post_content" cols="60" rows="20"></textarea>
 	</div>
 	<div>
+		<input type="hidden" value="<?php echo date("Y-m-d", time()); ?>" name="date">
 		<input type="submit" value="submit">
 	</div>
 </form>
