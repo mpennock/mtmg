@@ -21,7 +21,7 @@ include("inc/header.php");
 <a href="post.php?board=<?php echo $page_title; ?>">Submit A New Post</a>
 
 <?php
-$conn = new PDO('mysql:host=localhost;dbname=ploop', 'root', '');
+include("db.php");
 
 $sql = "SELECT * FROM posts WHERE board = '$page_title'";
 
