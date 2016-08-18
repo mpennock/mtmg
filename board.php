@@ -28,10 +28,11 @@ $sql = "SELECT * FROM posts WHERE board = '$page_title'";
 $posts = $conn->query($sql);
 
 foreach ($posts as $post) {
-	echo "<ul><li>" . $post['date_time'] . "</li>" .
-	"<li>" . $post['board'] . "</li>" .
-	"<li>" . $post['post_title'] . "</li>" . 
-	"<li>" . $post['post_content'] . "</li></ul>";
+	echo "<h2>" . $post['post_title'] . "</h2>" . 
+	"<h3>" . $post['username'] . " | " . $post['date_time'] . "</h3>" . 
+	"<p>" . $post['post_content'] . "</p>";
 }
+
+
 ?>
 <?php include("inc/footer.php"); ?>

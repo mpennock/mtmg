@@ -1,7 +1,7 @@
 <?php 
 
 $username = $_POST["username"];
-$password = $_POST["password"];
+$password = hash('sha512', $_POST['password']);
 
 $valid_login = true;
 $error_message = "ERROR: ";

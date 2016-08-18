@@ -11,7 +11,7 @@ if(empty($_SESSION['user_id'])) {
 $page_title = $_GET["board"];
 $boards = array("movies", "tv", "music", "games");
 include("inc/header.php"); 
-
+echo $_SESSION['user_id'];
 ?>
 
 <form action="save_post.php" method="post">
