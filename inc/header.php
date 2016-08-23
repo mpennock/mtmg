@@ -34,7 +34,7 @@ function getusername() {
 <body>
 <header>
 	<div class="flex-wrapper navbar">
-		<h1 class="box">PLOOP</h1>
+		<h1 class="box">MTMG</h1>
 		<nav class="box">
 			<ul class="flex-wrapper">
 				<li><a href="index.php">Home</a></li>
