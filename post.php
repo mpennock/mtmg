@@ -3,46 +3,40 @@
 // connect to the existing session
 session_start();
 
-// if there is no valid id, redirect back to our login page
-if(empty($_SESSION['user_id'])) {
-    header('location:login.php');
+if(!empty($_SESSION['user_id'])) {
+    $is_logged_in = true;
+} else if (empty($_SESSION['user_id'])) {
+	$is_logged_in = false;
 }
 
 $page_title = $_GET["board"];
-$boards = array("movies", "tv", "music", "games");
-include("inc/header.php"); 
-echo $_SESSION['user_id'];
-?>
+$post_id = $_GET['post_id'];
 
-<form action="save_post.php" method="post">
-	<div>
-		<label for="board">Posting to...</label>
-		<select name="board" id="board">
-			<?php foreach ($boards as $board) {
-				echo "<option value='$board'";
-				if ($board == $page_title) {
-					echo " selected='selected'";
-				}
-				echo ">$board</option>";
-			} ?>		
-		</select>
+include("inc/header.php");
+include("db.php");
 
-	</div>
-	<div>
-		<label for="post_title">Title</label>
-		<input type="text" name="post_title" id="post_title">
-	</div>
-	<div>
-		<label for="post_content">Content</label>
-		<textarea name="post_content" id="post_content" cols="60" rows="20"></textarea>
-	</div>
-	<div>
-		<input type="hidden" value="<?php echo date("Y-m-d", time()); ?>" name="date">
-		<input type="submit" value="submit">
-	</div>
-</form>
+echo "<h1>$page_title</h1>";
+// get post
+$sql_posts = "SELECT * FROM posts WHERE post_id = '$post_id'";
+$posts = $conn->query($sql_posts);
+
+foreach ($posts as $post) {
+	echo "<h2>" . $post['post_title'] . "</h2>" .
+	"<h3>" . $post['username'] . " | " . $post['date_time'] . 
+	"<div>" . $post['post_content'] . "</div>";
+	if ($is_logged_in == true) {
+		echo "<ul><li><a href='comment.php?post_id=$post_id&board=$page_title'>Respond</a></li></ul>";
+	}
+}
+
+// get comments
+$sql_comments = "SELECT * FROM comments WHERE post_id = '$post_id'";
+$comments = $conn->query($sql_comments);
+
+foreach ($comments as $comment) {
+	echo "<h4>" . $comment['username'] . " says:</h4>" . 
+	"<div>" . $comment['comment_content'] . "</div>";
+}
 
 
-
-
-<?php include("inc/footer.php"); ?>
+include("inc/footer.php"); ?>

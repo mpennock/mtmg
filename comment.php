@@ -23,6 +23,7 @@ $posts = $conn->query($sql);
 
 foreach ($posts as $post) {
 	echo "<h2>Responding to " . $post['username'] . "'s Post</h2>" . 
+	"<h3>" . $post['post_title'] . "</h3>" .
 	"<p>" . $post['post_content'] . "</p>";
 }
 ?>

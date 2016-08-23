@@ -19,7 +19,7 @@ reg_date DATE,
 username VARCHAR(100) NOT NULL,
 password CHAR(128) NOT NULL);
 
-DROP TABLE comments;
+
 CREATE TABLE comments (
 	comment_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     post_id int,
@@ -37,5 +37,5 @@ SELECT * FROM users;
 SELECT * FROM users WHERE user_id = 2;
 
 INSERT INTO users (reg_date, username, password) VALUES ('2016-01-05', 'm', 'm');
-
+INSERT INTO comments (post_id, board, comment_date, username, comment_content) VALUES ('post_id', 'board', 'date', '$username', '$comment');
 SELECT * FROM comments;
