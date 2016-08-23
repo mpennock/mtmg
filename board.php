@@ -1,11 +1,6 @@
 <?php
 session_start();
 
-$is_logged_in = "";
-
-
-
-
 if (!isset($_GET["board"])) {
 	header('Location: index.php');
 	exit;
@@ -22,8 +17,11 @@ if (!isset($_GET["board"])) {
 include("inc/header.php");
 ?>
 
-<h1>Welcome to <?php echo $page_title ?></h1>
-<a href="new_post.php?board=<?php echo $page_title; ?>">Submit A New Post</a>
+<h1 class="board-header">Welcome to <?php echo $page_title ?></h1>
+<div class="new-post-submit">
+	<a href="new_post.php?board=<?php echo $page_title; ?>">Submit New Post</a>	
+</div>
+
 
 <?php
 include("db.php");
@@ -35,8 +33,8 @@ $posts = $conn->query($sql_posts);
 foreach ($posts as $post) {
 	$post_id = $post['post_id'];
 	
-	echo "<h2><a href='post.php?post_id=$post_id&board=$page_title'>" . $post['post_title'] . "</a></h2>" . 
-	"<h3>" . $post['username'] . " | " . $post['date_time'] . "</h3>";
+	echo "<div class='post'><h2><a href='post.php?post_id=$post_id&board=$page_title'>" . $post['post_title'] . "</a></h2>" . 
+	"<h3>" . $post['username'] . " | " . $post['date_time'] . "</h3></div>";
 
 }
 

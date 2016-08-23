@@ -4,13 +4,11 @@
 session_start();
 
 $user_id = $_SESSION['user_id'];
-$comment = $_POST['comment'];
+$comment = addslashes($_POST['comment']);
 $post_id = $_POST['post_id'];
 $date = $_POST['date'];
 $board = $_POST["board"];
 $username = "";
-
-echo $board;
 
 include('db.php');
 
@@ -28,4 +26,4 @@ $conn->exec($sql);
 
 $conn = null;
 
-header("Location: board.php?board=$board");
+header("Location: post.php?board=$board&post_id=$post_id");

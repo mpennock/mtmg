@@ -5,8 +5,7 @@ session_start();
 
 $post_id = $_GET['post_id'];
 $board = $_GET['board'];
-
-echo $board;
+$page_title = "Post" . " | " . $board;
 
 // if there is no valid id, redirect back to our login page
 if(empty($_SESSION['user_id'])) {
