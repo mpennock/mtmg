@@ -2,7 +2,7 @@
 session_start();
 $date_time = $_POST["date"];
 $title = $_POST["post_title"];
-$content = $_POST["post_content"];
+$content = addslashes($_POST["post_content"]);
 $board = $_POST["board"];
 $user_id = $_SESSION['user_id'];
 

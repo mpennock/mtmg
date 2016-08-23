@@ -47,7 +47,7 @@ function getusername() {
 		<nav class="box">
 			<ul class="flex-wrapper">
 				<?php if ($is_logged_in == true) {
-					echo "<li>Welcome " . getusername() . "!</li><li><a href='logout.php'> Logout</a></li>";
+					echo "<li>Welcome, &nbsp;<b>" . getusername() . "!</b></li><li><a href='logout.php'> Logout</a></li>";
 				} else {
 					echo "<li><a href='login.php'>Login</a></li>" . 
 					"<li><a href='register.php'>Register</a></li>";
